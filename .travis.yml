@@ -1,0 +1,17 @@
+sudo: false
+notifications:
+  email: false
+language: node_js
+node_js:
+- '0.10'
+addons:
+  sauce_connect: true
+env:
+  matrix:
+  - RUN_TEST=test-sherlocked
+  global:
+script:
+- npm run $RUN_TEST
+cache:
+  directories:
+  - node_modules

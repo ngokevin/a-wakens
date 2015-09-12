@@ -1,4 +1,5 @@
 var path = require('path');
+
 var webpack = require('webpack');
 
 
@@ -34,16 +35,25 @@ module.exports = {
   module: {
     loaders: [
       {
+        loader: 'style-loader!css-loader!autoprefixer-loader',
+        test: /\.css/,
+      },
+      {
         // JS.
         exclude: /(node_modules|bower_components)/,
         loaders: JS_LOADERS,
         test: /\.js$/,
       },
+      {
+        loader: 'style-loader!css-loader!autoprefixer-loader!stylus-loader',
+        test: /\.styl/,
+      },
     ],
   },
   resolve: {
-    extensions: ['', '.js', '.json'],
+    extensions: ['', '.js', '.json', '.styl'],
     modulesDirectories: [
+      'src/css',
       'src/js',
       'node_modules',
     ],
