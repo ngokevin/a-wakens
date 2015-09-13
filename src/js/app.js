@@ -1,11 +1,12 @@
-import '../css/base.styl';
 import THREE from 'three';
 import key from 'keymaster';
 
 import camera from './camera';
+import controls from './controls';
 import lights from './lights';
 import {cubes} from './objects';
 import skyBox from './skyBox';
+import '../css/base.styl';
 
 
 // Set up the scene, camera, and renderer.
@@ -21,7 +22,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 
-scene.add(camera);
+scene.add(controls.getObject());
 scene.add(skyBox);
 scene.add.apply(scene, lights);
 scene.add.apply(scene, cubes);

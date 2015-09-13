@@ -1,4 +1,5 @@
 import THREE from 'three';
+import PointerLockControls from './lib/PointerLockControls';
 
 
 const camera = new THREE.PerspectiveCamera(
@@ -10,7 +11,7 @@ const camera = new THREE.PerspectiveCamera(
 
 
 // Off-set the camera from the center.
-camera.position.z = 10;
+camera.position.z = 5;
 
 
 export default camera;
