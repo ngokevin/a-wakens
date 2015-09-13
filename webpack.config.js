@@ -35,10 +35,6 @@ module.exports = {
   module: {
     loaders: [
       {
-        loader: 'style-loader!css-loader!autoprefixer-loader',
-        test: /\.css/,
-      },
-      {
         // JS.
         exclude: /(node_modules|bower_components)/,
         loaders: JS_LOADERS,
@@ -48,13 +44,18 @@ module.exports = {
         loader: 'style-loader!css-loader!autoprefixer-loader!stylus-loader',
         test: /\.styl/,
       },
+      {
+        loader: 'shader-loader',
+        test: /\.glsl/,
+      },
     ],
   },
   resolve: {
-    extensions: ['', '.js', '.json', '.styl'],
+    extensions: ['', '.glsl', '.js', '.json', '.styl'],
     modulesDirectories: [
       'src/css',
       'src/js',
+      'src/shaders',
       'node_modules',
     ],
   },
