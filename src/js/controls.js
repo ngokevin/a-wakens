@@ -1,3 +1,5 @@
+import key from 'keymaster';
+
 import camera from './camera';
 import PointerLockControls from './PointerLockControls';
 
@@ -61,6 +63,29 @@ function requestPointerLock() {
 
 
 document.body.addEventListener('click', requestPointerLock, false);
+
+
+// Keybindings to set camera position.
+key('w', () => {
+  controls.camera.translateZ(-0.02);
+});
+key('a', () => {
+  controls.camera.translateX(-0.02);
+});
+key('s', () => {
+  controls.camera.translateZ(0.02);
+});
+key('d', () => {
+  controls.camera.translateX(0.02);
+});
+key('space', () => {
+  // Jump.
+  camera.position.y += 1;
+
+  setTimeout(() => {
+    camera.position.y -= 1;
+  }, 500);
+});
 
 
 export default controls;

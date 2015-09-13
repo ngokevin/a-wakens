@@ -12,6 +12,7 @@ export default class PointerLockControls {
 
     this.yawObject = new THREE.Object3D();
     this.yawObject.add(this.pitchObject);
+    this.camera = this.yawObject;
 
     this.getDirection();
     document.addEventListener('mousemove', this.onMouseMove, false);
@@ -33,10 +34,6 @@ export default class PointerLockControls {
       -1 * Math.PI / 2,
       Math.min(Math.PI / 2, this.pitchObject.rotation.x)
     );
-  }
-
-  getObject() {
-    return this.yawObject;
   }
 
   getDirection() {

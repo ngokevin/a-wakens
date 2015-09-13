@@ -1,5 +1,4 @@
 import THREE from 'three';
-import key from 'keymaster';
 
 import camera from './camera';
 import controls from './controls';
@@ -22,7 +21,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 
-scene.add(controls.getObject());
+scene.add(controls.camera);
 scene.add(skyBox);
 scene.add.apply(scene, lights);
 scene.add.apply(scene, cubes);
@@ -37,32 +36,3 @@ function animate() {
   renderer.render(scene, camera);
 }
 animate();
-
-
-// Keybindings to set camera position.
-key('w', () => {
-  camera.position.z -= .05;
-});
-key('a', () => {
-  camera.position.x -= .05;
-});
-key('s', () => {
-  camera.position.z += .05;
-});
-key('d', () => {
-  camera.position.x += .05;
-});
-key('i', () => {
-  camera.rotation.x += .05;
-});
-key('k', () => {
-  camera.rotation.x -= .05;
-});
-key('space', () => {
-  // Jump.
-  camera.position.y += 1;
-
-  setTimeout(() => {
-    camera.position.y -= 1;
-  }, 500);
-});

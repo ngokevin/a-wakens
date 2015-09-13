@@ -17,7 +17,7 @@ const material = new THREE.MeshPhongMaterial({
 // Create a mesh, an object that takes a geometry and applies a material to it,
 // which we then can insert to our scene, and move freely around.
 let cubes = [];
-[[-3, 0, 0], [0, 0, 0], [3, 0, 0]].forEach(coordinates => {
+[[-3, 0, -10], [0, 0, -10], [3, 0, -10]].forEach(coordinates => {
   let [x, y, z] = coordinates;
   let cube = new THREE.Mesh(geometry, material);
   cube.position.set(x, y, z);
