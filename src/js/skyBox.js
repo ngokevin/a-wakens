@@ -7,11 +7,11 @@ import vertexShader from '../shaders/vertex';
 const uniforms = {
   topColor: {
     type: 'c',
-    value: new THREE.Color(0x0077ff)
+    value: new THREE.Color(0xAAAACC)
   },
   bottomColor: {
     type: 'c',
-    value: new THREE.Color(0x00ff77)
+    value: new THREE.Color(0x222244)
   },
   offset: {
     type: 'f',

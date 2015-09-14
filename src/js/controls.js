@@ -66,17 +66,18 @@ document.body.addEventListener('click', requestPointerLock, false);
 
 
 // Keybindings to set camera position.
+const velocity = 2;
 key('w', () => {
-  controls.camera.translateZ(-0.02);
+  controls.camera.translateZ(-1 * velocity);
 });
 key('a', () => {
-  controls.camera.translateX(-0.02);
+  controls.camera.translateX(-1 * velocity);
 });
 key('s', () => {
-  controls.camera.translateZ(0.02);
+  controls.camera.translateZ(velocity);
 });
 key('d', () => {
-  controls.camera.translateX(0.02);
+  controls.camera.translateX(velocity);
 });
 key('space', () => {
   // Jump.

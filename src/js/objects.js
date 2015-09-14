@@ -8,7 +8,7 @@ const geometry = new THREE.BoxGeometry(1, 1, 1);
 // Color it with a material. Phong material for smooth shading.
 // All materials take an object to give it properties. Let's use a color.
 const material = new THREE.MeshPhongMaterial({
-  color: 0x00ff00,
+  color: 0x226622,
   specular: 0x119911
 });
 
@@ -22,6 +22,7 @@ class VisualizerBar {
 
     this.velocity = Math.random() * 3 + 1;  // Speed of growth.
     this.yPos = y;  // Cancels out yScale.
+    this.yPosMax = 10;  // Ceiling.
     this.yScale = 1;
 
     this.cube = new THREE.Mesh(geometry, material);
@@ -30,7 +31,7 @@ class VisualizerBar {
   }
 
   animate = delta => {
-    if (Math.random() < .05 || this.yPos < 0) {
+    if (Math.random() < .05 || this.yPos < 0 || this.yPos > this.yPosMax) {
       // Change direction of growth of the bar.
       this.velocity *= -1;
     }
@@ -46,8 +47,8 @@ class VisualizerBar {
 
 
 let positions = [];
-const distance = 10;
-const numCubes = 10;
+const distance = 20;
+const numCubes = 25;
 for (let i = 0; i < numCubes; i++) {
   // Lay out cubes in a circle around the origin.
   let rads = i * (2 * Math.PI) / numCubes;
