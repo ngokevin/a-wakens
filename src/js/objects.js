@@ -2,7 +2,7 @@ import THREE from 'three';
 
 
 // BoxGeometry contains all points (vertices) and fill (faces) of the cube.
-const geometry = new THREE.BoxGeometry(1, 1, 1);
+const geometry = new THREE.BoxGeometry(1, 5, 1);
 
 
 // Color it with a material. Phong material for smooth shading.
@@ -13,23 +13,39 @@ const material = new THREE.MeshPhongMaterial({
 });
 
 
-// Create cubes.
-// Create a mesh, an object that takes a geometry and applies a material to it,
-// which we then can insert to our scene, and move freely around.
-let cubes = [];
-[[-3, 0, -10], [0, 0, -10], [3, 0, -10]].forEach(coordinates => {
-  let [x, y, z] = coordinates;
-  let cube = new THREE.Mesh(geometry, material);
-  cube.position.set(x, y, z);
+class VisualizerBar {
+  /*
+    Attaches animate functions to objects, keeping track of state.
+  */
+  constructor(coordinates) {
+    const [x, y, z] = coordinates;
 
-  cube.animate = () => {
-    // Animate the cube rotating.
-    cube.rotation.y += .01;
-    cube.rotation.z += .001;
-  };
+    this.cube = new THREE.Mesh(geometry, material);
+    this.cube.position.set(x, y, z);
+    this.cube.animate = this.animate;
+  }
 
-  cubes.push(cube);
-});
+  animate() {
+    this.rotation.y += .01;
+    this.rotation.z += .001;
+  }
+}
+
+
+let positions = [];
+const distance = 10;
+const numCubes = 10;
+for (let i = 0; i < numCubes; i++) {
+  // Lay out cubes in a circle around the origin.
+  let rads = i * (2 * Math.PI) / numCubes;
+
+  positions.push([
+    Math.cos(rads) * distance,
+    0,
+    Math.sin(rads) * distance
+  ]);
+}
+const cubes = positions.map(xyz => new VisualizerBar(xyz).cube);
 
 
 export {cubes};

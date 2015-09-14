@@ -11,7 +11,7 @@ const uniforms = {
   },
   bottomColor: {
     type: 'c',
-    value: new THREE.Color(0xffffff)
+    value: new THREE.Color(0x00ff77)
   },
   offset: {
     type: 'f',
