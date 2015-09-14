@@ -7,7 +7,7 @@
     "build": "NODE_ENV=production webpack --progress",
     "serve": "gulp",
     "serve-js": "webpack-dev-server --content-base src --progress --watch --history-api-fallback --inline --hot",
-    "test-sherlocked": "(npm run serve &) && (npm run serve-js &) && sleep 10 && node sherlocked.js"
+    "test-sherlocked": "make test-sherlocked"
   },
   "repository": {
     "type": "git",
