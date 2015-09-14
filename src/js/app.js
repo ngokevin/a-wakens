@@ -22,11 +22,15 @@ scene.add.apply(scene, cubes);
 document.body.appendChild(renderer.domElement);
 
 
+let prevTime = performance.now();
 function animate() {
   // Render loop.
   requestAnimationFrame(animate);
 
-  cubes.forEach(cube => cube.animate());
+  let time = performance.now();
+  let delta = (time - prevTime) / 1000;
+  prevTime = time;
+  cubes.forEach(cube => cube.animate(delta));
 
   renderer.render(scene, camera);
 }

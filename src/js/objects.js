@@ -2,7 +2,7 @@ import THREE from 'three';
 
 
 // BoxGeometry contains all points (vertices) and fill (faces) of the cube.
-const geometry = new THREE.BoxGeometry(1, 5, 1);
+const geometry = new THREE.BoxGeometry(1, 1, 1);
 
 
 // Color it with a material. Phong material for smooth shading.
@@ -20,14 +20,27 @@ class VisualizerBar {
   constructor(coordinates) {
     const [x, y, z] = coordinates;
 
+    this.velocity = Math.random() * 3 + 1;  // Speed of growth.
+    this.yPos = y;  // Cancels out yScale.
+    this.yScale = 1;
+
     this.cube = new THREE.Mesh(geometry, material);
     this.cube.position.set(x, y, z);
     this.cube.animate = this.animate;
   }
 
-  animate() {
-    this.rotation.y += .01;
-    this.rotation.z += .001;
+  animate = delta => {
+    if (Math.random() < .05 || this.yPos < 0) {
+      // Change direction of growth of the bar.
+      this.velocity *= -1;
+    }
+
+    const yChange = this.velocity * delta;
+    this.yScale += yChange;
+    this.yPos += yChange / 2;
+
+    this.cube.scale.y = this.yScale;
+    this.cube.position.y = this.yPos;
   }
 }
 
