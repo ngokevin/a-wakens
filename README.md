@@ -7,5 +7,5 @@ WebGL + WebVR audio visualizer.
 ```bash
 npm install
 npm run serve-js
-gulp
+npm run serve
 ```
