@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import THREE from 'three';
 
 
@@ -18,7 +19,7 @@ export default class PointerLockControls {
     document.addEventListener('mousemove', this.onMouseMove, false);
   }
 
-  onMouseMove = event => {
+  onMouseMove = _.throttle(event => {
     if (!this.enabled) {
       return;
     }
@@ -34,7 +35,7 @@ export default class PointerLockControls {
       -1 * Math.PI / 2,
       Math.min(Math.PI / 2, this.pitchObject.rotation.x)
     );
-  }
+  }, 1 / 60)
 
   getDirection() {
     // Assumes the camera itself is not rotated.

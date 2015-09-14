@@ -22,6 +22,7 @@
   "dependencies": {
     "babel-core": "^5.8.24",
     "keymaster": "^1.6.2",
+    "lodash": "^3.10.1",
     "three": "^0.71.1"
   },
   "devDependencies": {
