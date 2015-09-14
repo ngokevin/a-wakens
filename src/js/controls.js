@@ -79,6 +79,15 @@ key('s', () => {
 key('d', () => {
   controls.camera.translateX(velocity);
 });
+key('p', () => {
+  // Play music.
+  const audio = document.querySelector('audio');
+  if (audio.paused == false) {
+    audio.pause();
+  } else {
+    audio.play();
+  }
+});
 key('space', () => {
   // Jump.
   camera.position.y += 1;

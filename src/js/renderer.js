@@ -4,7 +4,12 @@
 import THREE from 'three';
 
 
-const renderer = new THREE.WebGLRenderer({alpha: true});
+const renderer = new THREE.WebGLRenderer({
+  alpha: true,
+  antialias: true,
+});
+renderer.gammaInput = true;
+renderer.gammaOutput = true;
 renderer.setClearColor(0xaaaaaa, 0);
 renderer.setSize(window.innerWidth, window.innerHeight);
 
