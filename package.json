@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/ngokevin/audioworld#readme",
   "dependencies": {
-    "dancer": "^0.4.0",
+    "dancer-browserify": "^0.5.0",
     "keymaster": "^1.6.2",
     "lodash": "^3.10.1",
     "three": "^0.71.1"

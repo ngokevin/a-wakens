@@ -1,9 +1,6 @@
 /*
   Add the renderer, which is a <canvas>, to the document.
 */
-import THREE from 'three';
-
-
 const renderer = new THREE.WebGLRenderer({
   alpha: true,
   antialias: true,

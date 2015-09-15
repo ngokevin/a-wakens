@@ -32,6 +32,11 @@ module.exports = {
     path: './src/build',
     publicPath: '/',
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      'THREE': 'three'
+    })
+  ],
   module: {
     loaders: [
       {
@@ -51,6 +56,9 @@ module.exports = {
     ],
   },
   resolve: {
+    alias: {
+      dancer: 'dancer-browserify'
+    },
     extensions: ['', '.glsl', '.js', '.json', '.styl'],
     modulesDirectories: [
       'src/css',

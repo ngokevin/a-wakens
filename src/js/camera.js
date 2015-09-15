@@ -1,6 +1,3 @@
-import THREE from 'three';
-
-
 const camera = new THREE.PerspectiveCamera(
   40,  // Field of view.
   window.innerWidth / window.innerHeight,  // Aspect ratio (width / height).

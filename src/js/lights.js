@@ -1,6 +1,3 @@
-import THREE from 'three';
-
-
 // Hemisphere light.
 const hemiLight = new THREE.HemisphereLight(0xccccff, 0xccccff, 1);
 hemiLight.position.y = 500;

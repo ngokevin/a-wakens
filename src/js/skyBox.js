@@ -1,5 +1,3 @@
-import THREE from 'three';
-
 import fragmentShader from '../shaders/fragment';
 import vertexShader from '../shaders/vertex';
 

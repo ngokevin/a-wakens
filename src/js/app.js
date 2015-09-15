@@ -1,5 +1,4 @@
-import THREE from 'three';
-
+import audio from './audio';
 import camera from './camera';
 import controls from './controls';
 import lights from './lights';

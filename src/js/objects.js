@@ -1,6 +1,3 @@
-import THREE from 'three';
-
-
 // BoxGeometry contains all points (vertices) and fill (faces) of the cube.
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 
