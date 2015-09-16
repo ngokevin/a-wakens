@@ -2,7 +2,7 @@ import audio from './audio';
 import camera from './camera';
 import controls from './controls';
 import lights from './lights';
-import bars from './objects/bars';
+import barVisualization from './objects/barVisualization';
 import platform from './objects/platform';
 import renderer from './renderer';
 import skyBox from './skyBox';
@@ -17,7 +17,7 @@ scene.add(controls.camera);
 scene.add(skyBox);
 scene.add(platform);
 scene.add.apply(scene, lights);
-scene.add.apply(scene, bars);
+scene.add.apply(scene, barVisualization.getTHREEBars());
 
 
 document.body.appendChild(renderer.domElement);
@@ -31,7 +31,10 @@ function animate() {
   let time = performance.now();
   let delta = (time - prevTime) / 1000;
   prevTime = time;
-  bars.forEach(bar => bar.animate(delta));
+
+  if (audio.isPlaying()) {
+    barVisualization.setSpectrum(audio.getSpectrum());
+  }
 
   renderer.render(scene, camera);
 }
