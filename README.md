@@ -1,6 +1,6 @@
-# audioworld
+# a-udioworld
 
-WebGL + WebVR audio visualizer.
+A-Frame VR audio visualization using [aframe-react](https://github.com/ngokevin/aframe-react).
 
 ## Installation
 

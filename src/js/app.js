@@ -1,41 +1,46 @@
+import 'aframe-core';
+import 'babel-polyfill';
+import {Animation, Entity, Scene} from 'aframe-react';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 import audio from './audio';
-import camera from './camera';
-import controls from './controls';
-import lights from './lights';
-import barVisualization from './objects/barVisualization';
-import platform from './objects/platform';
-import renderer from './renderer';
-import skyBox from './skyBox';
-import '../css/base.styl';
+import BarVisualization from './components/BarVisualization';
+import Camera from './components/Camera';
+import Ground from './components/Ground';
+import Light from './components/Light';
+import Sky from './components/Sky';
 
+class Udioworld extends React.Component {
+  constructor(props, state) {
+    super(props, state);
 
-// Setup the scene.
-const scene = new THREE.Scene();
-scene.fog = new THREE.Fog(0xffffff, 1000, 10000);
-
-scene.add(controls.camera);
-scene.add(skyBox);
-scene.add(platform);
-scene.add.apply(scene, lights);
-scene.add.apply(scene, barVisualization.getTHREEBars());
-
-
-document.body.appendChild(renderer.domElement);
-
-
-let prevTime = performance.now();
-function animate() {
-  // Render loop.
-  requestAnimationFrame(animate);
-
-  let time = performance.now();
-  let delta = (time - prevTime) / 1000;
-  prevTime = time;
-
-  if (audio.isPlaying()) {
-    barVisualization.setSpectrum(audio.getSpectrum());
+    this.state = {
+      spectrum: []
+    };
   }
 
-  renderer.render(scene, camera);
+  tickAudio() {
+    this.setState({
+      spectrum: audio.getSpectrum()
+    });
+  }
+
+  render () {
+    return (
+      <Scene onTick={this.tickAudio}>
+        <Camera/>
+
+        <Sky/>
+
+        <Light type="ambient" color="#888"/>
+        <Light type="directional" intensity="0.5" position="-1 1 0"/>
+        <Light type="directional" intensity="1" position="1 1 0"/>
+
+        <BarVisualization spectrum={this.state.spectrum}/>
+      </Scene>
+    );
+  }
 }
-animate();
+
+ReactDOM.render(<Udioworld/>, document.querySelector('.scene-container'));
