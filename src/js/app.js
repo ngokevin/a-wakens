@@ -6,6 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import audio from './audio';
+import {LIGHTSABER_GREEN} from './colors';
 import BarVisualization from './components/BarVisualization';
 import Camera from './components/Camera';
 import Ground from './components/Ground';
@@ -25,7 +26,7 @@ class Udioworld extends React.Component {
   }
 
   tickAudio = t => {
-    if (audio.isPlaying()) {
+    if (audio.isPlaying() && Math.floor(t) % 2 === 0) {
       this.setState({
         avgFrequency: audio.getFrequency(0, 511) * 1000,
         spectrum: audio.getSpectrum()
@@ -53,8 +54,9 @@ class Udioworld extends React.Component {
             <Animation attribute="rotation" easing="linear" dur="10000" repeat="indefinite"
                        to="0 360 0"/>
             <Entity geometry="primitive: sphere; radius: 0.2"
-                    material="color: #2719C7; shader: flat"
-                    light="color: #2719C7; type: point; intensity: 10;" position="-15 0.5 0"/>
+                    material={`color: ${LIGHTSABER_GREEN}; shader: flat`}
+                    light={`color: ${LIGHTSABER_GREEN}; type: point; intensity: 10;`}
+                    position="-15 0.5 0"/>
           </Entity>
 
           <BarVisualization spectrum={this.state.spectrum} num={50}/>

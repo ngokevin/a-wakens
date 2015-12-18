@@ -2,6 +2,8 @@ import {utils} from 'aframe-core';
 import {Entity} from 'aframe-react';
 import React from 'react';
 
+import {LIGHTSABER_RED, LIGHTSABER_BLUE} from '../colors';
+
 export default class BarVisualization extends React.Component {
   static propTypes = {
     num: React.PropTypes.number,
@@ -17,9 +19,9 @@ export default class BarVisualization extends React.Component {
     let bars = [];
     const step = Math.floor(this.props.spectrum.length / this.props.num);
 
-    let color = 'red';
+    let color = LIGHTSABER_RED;
     for (let i = 0; i < this.props.num; i++) {
-      if (i > this.props.num / 2) { color = '#2FF923'; }
+      if (i > this.props.num / 2) { color = LIGHTSABER_BLUE; }
       bars.push(
         <Bar key={i} color={color} frequency={this.props.spectrum[i * step]}/>
       );
