@@ -9,13 +9,15 @@ import audio from './audio';
 import {LIGHTSABER_GREEN} from './colors';
 import BarVisualization from './components/BarVisualization';
 import Camera from './components/Camera';
+import Cursor from './components/Cursor';
 import Ground from './components/Ground';
 import Light from './components/Light';
+import Orb from './components/Orb';
 import Sky from './components/Sky';
 
 registerComponent('layout', component);
 
-class Udioworld extends React.Component {
+class AWakens extends React.Component {
   constructor(props, state) {
     super(props, state);
 
@@ -25,6 +27,15 @@ class Udioworld extends React.Component {
       avgFrequency: 1,
       spectrum: [],
     };
+  }
+
+  changeSong = () => {
+    console.log("CLICK");
+    audio.pause();
+    audio.load({
+      src: '/audio/endor.mp3'
+    });
+    audio.play();
   }
 
   tickAudio = () => {
@@ -38,30 +49,29 @@ class Udioworld extends React.Component {
     }
   }
 
-  render () {
+  render() {
     return (
       <div>
         <a-assets>
           <img id="sky" src="img/sky.jpg"/>
           <img id="ground" src="img/ground.jpg"/>
+          <img id="tiefighter" src="img/tiefighter.png"/>
         </a-assets>
 
         <Scene onTick={this.tickAudio}>
-          <Camera/>
+          <Camera><Cursor fuse={true} maxDistance="100"/></Camera>
 
           <Sky/>
           <Ground/>
 
           <Light type="ambient" color="#AAA"/>
           <Light type="directional" intensity={this.state.avgFrequency} position="1 1 0"/>
-          <Entity>
-            <Animation attribute="rotation" easing="linear" dur="10000" repeat="indefinite"
-                       to="0 360 0"/>
-            <Entity geometry="primitive: sphere; radius: 0.2"
-                    material={`color: ${LIGHTSABER_GREEN}; shader: flat`}
-                    light={`color: ${LIGHTSABER_GREEN}; type: point; intensity: 10;`}
-                    position="-15 0.5 0"/>
-          </Entity>
+          <Orb/>
+          <Orb direction="reverse"/>
+
+          <Entity geometry="primitive: plane" material="src: #tiefighter; shader: flat"
+                  position="0 10 -10" look-at="[camera]"
+                  onClick={this.changeSong}/>
 
           <BarVisualization spectrum={this.state.spectrum}
                             startSpectrum={0}
@@ -73,4 +83,4 @@ class Udioworld extends React.Component {
   }
 }
 
-ReactDOM.render(<Udioworld/>, document.querySelector('.scene-container'));
+ReactDOM.render(<AWakens/>, document.querySelector('.scene-container'));

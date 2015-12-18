@@ -6,9 +6,10 @@ const dancer = new Dancer();
 dancer.load({
   src: '/audio/starwars.mp3'
 });
+dancer.play();
 
 
-key('p', () => {
+key('space p', () => {
   // Play music.
   if (dancer.isPlaying()) {
     dancer.pause();

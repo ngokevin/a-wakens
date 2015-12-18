@@ -60,12 +60,14 @@ export class Bar extends React.Component {
 
   render() {
     const yScale = this.props.frequency * 500 + 1;
-    const scale = {x: 1, y: yScale, z: 1};
     return (
       <Entity>
         <Entity geometry={{primitive: 'cylinder', height: 1, radius: 1}}
-                material={{color: this.props.color, roughness: 0.4}}
-                scale={utils.coordinates.stringify(scale)}/>
+                material={{color: this.props.color, roughness: 0}}
+                scale={`1 ${yScale} 1`}/>
+        <Entity geometry="primitive: sphere"
+                material={`color: ${this.props.color}; roughness: 0`}
+                position={`0 ${yScale / 2} 0`}/>
         <Entity geometry="primitive: ring; radiusInner: 1.1; radiusOuter: 1.4;
                           segmentsTheta: 32"
                 material="color: #FFF; side: double; shader: flat"
