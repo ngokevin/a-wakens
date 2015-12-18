@@ -19,29 +19,47 @@ class Udioworld extends React.Component {
     super(props, state);
 
     this.state = {
-      spectrum: []
+      avgFrequency: 1,
+      spectrum: [],
     };
   }
 
-  tickAudio = () => {
-    this.setState({
-      spectrum: audio.getSpectrum()
-    });
+  tickAudio = t => {
+    if (audio.isPlaying()) {
+      this.setState({
+        avgFrequency: audio.getFrequency(0, 511) * 1000,
+        spectrum: audio.getSpectrum()
+      });
+    }
   }
 
   render () {
     return (
-      <Scene onTick={this.tickAudio}>
-        <Camera/>
+      <div>
+        <a-assets>
+          <img id="sky" src="img/sky.jpg"/>
+          <img id="ground" src="img/ground.jpg"/>
+        </a-assets>
 
-        <Sky/>
+        <Scene onTick={this.tickAudio}>
+          <Camera/>
 
-        <Light type="ambient" color="#888"/>
-        <Light type="directional" intensity="0.5" position="-1 1 0"/>
-        <Light type="directional" intensity="1" position="1 1 0"/>
+          <Sky/>
+          <Ground/>
 
-        <BarVisualization spectrum={this.state.spectrum} num="50"/>
-      </Scene>
+          <Light type="ambient" color="#AAA"/>
+          <Light type="directional" intensity={this.state.avgFrequency} position="1 1 0"/>
+          <Entity>
+            <Animation attribute="rotation" easing="linear" dur="10000" repeat="indefinite"
+                       to="0 360 0"/>
+            <Entity geometry="primitive: sphere; radius: 0.2"
+                    material="color: #2719C7; shader: flat"
+                    light="color: #2719C7; type: point; intensity: 10;" position="-15 0.5 0"/>
+          </Entity>
+
+          <BarVisualization spectrum={this.state.spectrum} num={50}/>
+        </Scene>
+      </div>
     );
   }
 }

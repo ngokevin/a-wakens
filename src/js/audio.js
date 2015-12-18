@@ -4,7 +4,7 @@ import key from 'keymaster';
 
 const dancer = new Dancer();
 dancer.load({
-  src: '/audio/sample.mp3'
+  src: '/audio/starwars.mp3'
 });
 
 

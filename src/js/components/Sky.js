@@ -11,7 +11,7 @@ export default class Sky extends React.Component {
   render() {
     return (
       <Entity geometry={{primitive: 'sphere', radius: 5000}}
-              material={{color: this.props.color || '#73CFF0', shader: 'flat'}}
+              material={{color: this.props.color || '#73CFF0', shader: 'flat', src: '#sky'}}
               scale="1 1 -1"/>
     );
   }

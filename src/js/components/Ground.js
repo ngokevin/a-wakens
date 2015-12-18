@@ -9,9 +9,10 @@ export default class Ground extends React.Component {
 
   render() {
     return (
-      <Entity geometry={{primitive: 'cylinder', height: 0.2, radius: 12}}
-              material={{color: this.props.color || '#BABABA', metalness: 0.2,
-                         repeat: '50 20', roughness: 0.1}}/>
+      <Entity geometry={{primitive: 'cylinder', height: 0.2, radius: 50}}
+              material={{color: this.props.color || '#121417', roughness: 0.8,
+                         repeat: '20 20', src: '#ground'}}
+              position="0 -0.5 0"/>
     );
   }
 }
