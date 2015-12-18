@@ -1,4 +1,5 @@
-import 'aframe-core';
+import {registerComponent} from 'aframe-core';
+import {component} from 'aframe-layout';
 import 'babel-polyfill';
 import {Animation, Entity, Scene} from 'aframe-react';
 import React from 'react';
@@ -11,6 +12,8 @@ import Ground from './components/Ground';
 import Light from './components/Light';
 import Sky from './components/Sky';
 
+registerComponent('layout', component);
+
 class Udioworld extends React.Component {
   constructor(props, state) {
     super(props, state);
@@ -20,7 +23,7 @@ class Udioworld extends React.Component {
     };
   }
 
-  tickAudio() {
+  tickAudio = () => {
     this.setState({
       spectrum: audio.getSpectrum()
     });
@@ -37,7 +40,7 @@ class Udioworld extends React.Component {
         <Light type="directional" intensity="0.5" position="-1 1 0"/>
         <Light type="directional" intensity="1" position="1 1 0"/>
 
-        <BarVisualization spectrum={this.state.spectrum}/>
+        <BarVisualization spectrum={this.state.spectrum} num="50"/>
       </Scene>
     );
   }

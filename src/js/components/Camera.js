@@ -4,8 +4,8 @@ import React from 'react';
 export default class Camera extends React.Component {
   render() {
     return (
-      <Entity>
-        <Entity camera look-controls wasd-controls {...this.props}/>
+      <Entity position={this.props.position || '0 0 0'}>
+        <Entity camera look-controls wasd-controls/>
       </Entity>
     );
   }
