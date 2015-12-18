@@ -33,7 +33,7 @@ class AWakens extends React.Component {
     console.log("CLICK");
     audio.pause();
     audio.load({
-      src: '/audio/endor.mp3'
+      src: 'audio/endor.mp3'
     });
     audio.play();
   }

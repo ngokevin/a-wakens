@@ -4,7 +4,7 @@
   "description": "A-Frame VR audio visualization using aframe-react.",
   "main": "webpack.config.js",
   "scripts": {
-    "build": "NODE_ENV=production webpack --progress",
+    "build": "webpack --progress",
     "serve": "cd src && python -m SimpleHTTPServer 5050",
     "serve-js": "webpack-dev-server --content-base src --progress --watch --history-api-fallback --inline --hot",
     "test-sherlocked": "make test-sherlocked"
