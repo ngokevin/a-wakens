@@ -19,14 +19,18 @@ class Udioworld extends React.Component {
   constructor(props, state) {
     super(props, state);
 
+    this.t = 0;
+
     this.state = {
       avgFrequency: 1,
       spectrum: [],
     };
   }
 
-  tickAudio = t => {
-    if (audio.isPlaying() && Math.floor(t) % 2 === 0) {
+  tickAudio = () => {
+    this.t++;
+
+    if (audio.isPlaying() && this.t % 2 === 0) {
       this.setState({
         avgFrequency: audio.getFrequency(0, 511) * 1000,
         spectrum: audio.getSpectrum()
@@ -59,7 +63,10 @@ class Udioworld extends React.Component {
                     position="-15 0.5 0"/>
           </Entity>
 
-          <BarVisualization spectrum={this.state.spectrum} num={50}/>
+          <BarVisualization spectrum={this.state.spectrum}
+                            startSpectrum={0}
+                            endSpectrum={100}
+                            num={50}/>
         </Scene>
       </div>
     );

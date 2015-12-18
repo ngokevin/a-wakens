@@ -8,22 +8,29 @@ export default class BarVisualization extends React.Component {
   static propTypes = {
     num: React.PropTypes.number,
     radius: React.PropTypes.number,
+    endSpectrum: React.PropTypes.num,
+    startSpectrum: React.PropTypes.num,
     spectrum: React.PropTypes.any
   };
 
   static defaultProps = {
-    num: 512
+    num: 512,
+    endSpectrum: 512,
+    startSpectrum: 0
   };
 
   renderBars() {
     let bars = [];
-    const step = Math.floor(this.props.spectrum.length / this.props.num);
+    const endSpectrum = this.props.endSpectrum;
+    const startSpectrum = this.props.startSpectrum;
+    const step = Math.floor((endSpectrum - startSpectrum) / this.props.num);
 
     let color = LIGHTSABER_RED;
     for (let i = 0; i < this.props.num; i++) {
       if (i > this.props.num / 2) { color = LIGHTSABER_BLUE; }
       bars.push(
-        <Bar key={i} color={color} frequency={this.props.spectrum[i * step]}/>
+        <Bar key={i} color={color}
+             frequency={this.props.spectrum[startSpectrum + i * step]}/>
       );
     }
 
