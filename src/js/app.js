@@ -30,10 +30,9 @@ class AWakens extends React.Component {
   }
 
   changeSong = () => {
-    console.log("CLICK");
     audio.pause();
     audio.load({
-      src: '/audio/endor.mp3'
+      src: 'audio/endor.mp3'
     });
     audio.play();
   }
@@ -69,8 +68,9 @@ class AWakens extends React.Component {
           <Orb/>
           <Orb direction="reverse"/>
 
-          <Entity geometry="primitive: plane" material="src: #tiefighter; shader: flat"
-                  position="0 10 -10" look-at="[camera]"
+          <Entity geometry="primitive: plane"
+                  material="src: #tiefighter; shader: flat; transparent: true"
+                  position="0 10 -10" look-at="[camera]" scale="3 3 3"
                   onClick={this.changeSong}/>
 
           <BarVisualization spectrum={this.state.spectrum}
