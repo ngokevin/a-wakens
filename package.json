@@ -1,5 +1,5 @@
 {
-  "name": "a-udioworld",
+  "name": "a-wakens",
   "version": "1.0.0",
   "description": "A-Frame VR audio visualization using aframe-react.",
   "main": "webpack.config.js",
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ngokevin/audioworld.git"
+    "url": "git+https://github.com/ngokevin/a-wakens.git"
   },
   "author": "Kevin Ngo <me@ngokevin.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ngokevin/audioworld/issues"
+    "url": "https://github.com/ngokevin/a-wakens/issues"
   },
-  "homepage": "https://github.com/ngokevin/audioworld#readme",
+  "homepage": "https://github.com/ngokevin/a-wakens#readme",
   "dependencies": {
     "aframe-core": "^0.1.1",
     "aframe-layout": "^1.0.0",

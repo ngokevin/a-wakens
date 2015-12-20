@@ -26,7 +26,7 @@ class AWakens extends React.Component {
 
     this.audio = new Dancer();
     this.audio.load({
-      src: '/audio/starwars.mp3'
+      src: 'audio/starwars.mp3'
     });
     this.audio.play();
 
