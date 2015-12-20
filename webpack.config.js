@@ -12,13 +12,14 @@ var JS_LOADERS = [
 ];
 
 var PLUGINS = [];
-if (IS_PRODUCTION && process.env.MKT_ENV !== 'dev') {
+if (IS_PRODUCTION) {
   // Uglify in production, but not -dev.
   PLUGINS.push(
     new webpack.optimize.UglifyJsPlugin({
       mangle: {
           except: ['$super', '$', 'exports', 'require']
-      }
+      },
+      sourcemap: false
     })
   );
 }
@@ -42,7 +43,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        loader: 'style-loader!css-loader?-svgo'
       },
       {
         test: /\.json$/,
