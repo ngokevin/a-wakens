@@ -30,7 +30,7 @@ class AWakens extends React.Component {
     });
     this.audio.play();
 
-    key('space p', () => {
+    key('p', () => {
       // Play music.
       const audio = this.getAudio();
       if (audio.isPlaying()) {
