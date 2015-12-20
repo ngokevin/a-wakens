@@ -1,0 +1,1 @@
+module.exports.nonSeleniumCommands = ['pause', 'call' ,'__call', 'on','once','removeListener','removeAllListeners','emit'];

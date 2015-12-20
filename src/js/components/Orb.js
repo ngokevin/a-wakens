@@ -9,7 +9,7 @@ export default props => (
                dur="10000" repeat="indefinite" to="0 360 0"/>
     <Entity geometry="primitive: sphere; radius: 0.2"
             material={`color: ${LIGHTSABER_GREEN}; shader: flat`}
-            light={`color: ${LIGHTSABER_GREEN}; type: point; intensity: 1.5;`}
+            light={`color: ${LIGHTSABER_GREEN}; type: point; intensity: 2;`}
             position="15 0.5 0"/>
   </Entity>
 );

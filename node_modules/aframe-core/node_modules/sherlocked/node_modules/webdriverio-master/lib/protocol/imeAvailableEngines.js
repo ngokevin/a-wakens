@@ -1,0 +1,21 @@
+/**
+ *
+ * List all available engines on the machine. To use an engine, it has to be present
+ * in this list.
+ *
+ * @returns {Object[]} engines   A list of available engines
+ * @callbackParameter error, response
+ *
+ * @see  https://code.google.com/p/selenium/wiki/JsonWireProtocol#/session/:sessionId/ime/available_engines
+ * @type protocol
+ *
+ */
+
+module.exports = function imeAvailableEngines () {
+
+    this.requestHandler.create(
+        '/session/:sessionId/ime/available_engines',
+        arguments[arguments.length - 1]
+    );
+
+};
