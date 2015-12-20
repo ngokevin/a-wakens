@@ -63,10 +63,10 @@ export class Bar extends React.Component {
     return (
       <Entity>
         <Entity geometry={{primitive: 'cylinder', height: 1, radius: 1}}
-                material={{color: this.props.color, roughness: 0}}
+                material={{color: this.props.color, roughness: 0.5, metallic: 0}}
                 scale={`1 ${yScale} 1`}/>
         <Entity geometry="primitive: sphere"
-                material={`color: ${this.props.color}; roughness: 0`}
+                material={`color: ${this.props.color}; roughness: 0.5; metallic: 0`}
                 position={`0 ${yScale / 2} 0`}/>
         <Entity geometry="primitive: ring; radiusInner: 1.1; radiusOuter: 1.4;
                           segmentsTheta: 32"
