@@ -89,7 +89,8 @@ class AWakens extends React.Component {
           <Ground/>
 
           <Light type="ambient" color="#AAA"/>
-          <Light type="directional" intensity={this.state.avgFrequency} position="1 1 0"/>
+          <Light type="directional" intensity={this.state.avgFrequency * .75}
+                 position="1 1 0"/>
           <Orb/>
           <Orb direction="reverse"/>
 
