@@ -64,11 +64,11 @@ export class Bar extends React.Component {
       <Entity>
         <Entity id="lightsaber-blade"
                 geometry={{primitive: 'cylinder', height: 1, radius: 1}}
-                material={{color: this.props.color, roughness: 0.5, metallic: 0}}
+                material={{color: this.props.color, roughness: 0.5, metalness: 0}}
                 scale={`1 ${yScale} 1`}/>
         <Entity id="lightsaber-tip"
                 geometry="primitive: sphere"
-                material={`color: ${this.props.color}; roughness: 0.5; metallic: 0`}
+                material={`color: ${this.props.color}; roughness: 0.5; metalness: 0`}
                 position={`0 ${yScale / 2} 0`}/>
         <Entity id="lightsaber-handle"
                 geometry="primitive: ring; radiusInner: 1.1; radiusOuter: 1.4;
