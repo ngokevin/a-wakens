@@ -30,6 +30,16 @@ class AWakens extends React.Component {
     });
     this.audio.play();
 
+    window.addEventListener('click', () => {
+      // iOS.
+      var context = this.audio.audioAdapter.context;
+      var buffer = context.createBuffer(1, 1, 22050);
+      var source = context.createBufferSource();
+      source.buffer = buffer;
+      source.connect(context.destination);
+      source.start(0);
+    }, false);
+
     key('p', () => {
       // Play music.
       const audio = this.getAudio();
