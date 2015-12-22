@@ -11,7 +11,7 @@ export default props => {
     radiusOuter: 0.016
   };
   const material = {
-    color: 'LIGHTSABER_BLUE',
+    color: LIGHTSABER_BLUE,
     shader: 'flat',
     opacity: props.opacity || 0.9,
     transparent: true
