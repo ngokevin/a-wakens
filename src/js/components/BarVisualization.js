@@ -1,4 +1,4 @@
-import {utils} from 'aframe-core';
+import {utils} from 'aframe';
 import {Entity} from 'aframe-react';
 import React from 'react';
 

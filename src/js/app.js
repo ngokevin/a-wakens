@@ -1,4 +1,4 @@
-import {registerComponent} from 'aframe-core';
+import {registerComponent} from 'aframe';
 import {component} from 'aframe-layout';
 import 'babel-polyfill';
 import {Animation, Entity, Scene} from 'aframe-react';
@@ -54,6 +54,19 @@ class AWakens extends React.Component {
       avgFrequency: 1,
       spectrum: [],
     };
+
+    registerComponent('dancer', {
+      tick: t => {
+        this.t++;
+
+        if (this.audio.isPlaying() && this.t % 2 === 0) {
+          this.setState({
+            avgFrequency: this.audio.getFrequency(0, 511) * 1000,
+            spectrum: this.audio.getSpectrum()
+          });
+        }
+      }
+    });
   }
 
   changeSong = () => {
@@ -72,17 +85,6 @@ class AWakens extends React.Component {
     return this.audio;
   }
 
-  tickAudio = () => {
-    this.t++;
-
-    if (this.audio.isPlaying() && this.t % 2 === 0) {
-      this.setState({
-        avgFrequency: this.audio.getFrequency(0, 511) * 1000,
-        spectrum: this.audio.getSpectrum()
-      });
-    }
-  }
-
   render() {
     return (
       <div>
@@ -92,7 +94,7 @@ class AWakens extends React.Component {
           <img id="tiefighter" src="img/tiefighter.png"/>
         </a-assets>
 
-        <Scene onTick={this.tickAudio}>
+        <Scene dancer>
           <Camera><Cursor fuse={true} maxDistance="100" timeout="500"/></Camera>
 
           <Sky/>

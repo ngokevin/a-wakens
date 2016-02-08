@@ -23,9 +23,9 @@
   },
   "homepage": "https://github.com/ngokevin/a-wakens#readme",
   "dependencies": {
-    "aframe-core": "^0.1.1",
+    "aframe": "aframevr/aframe#dev",
     "aframe-layout": "^1.0.0",
-    "aframe-react": "^1.0.0",
+    "aframe-react": "^1.0.4",
     "babel-polyfill": "^6.3.14",
     "dancer-browserify": "^0.5.0",
     "json-loader": "^0.5.4",
