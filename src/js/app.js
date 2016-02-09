@@ -79,7 +79,7 @@ class AWakens extends React.Component {
       });
       this.audio.play();
     }, 50);
-  }
+  };
 
   getAudio() {
     return this.audio;
